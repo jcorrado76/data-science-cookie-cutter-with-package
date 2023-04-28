@@ -6,7 +6,6 @@ repos:
     -   id: end-of-file-fixer
     -   id: check-yaml
     -   id: debug-statements
-    -   id: double-quote-string-fixer
     -   id: name-tests-test
         args:
           - "--pytest-test-first"
@@ -18,14 +17,3 @@ repos:
     entry: isort
     language: system
     types: [python]
-- repo: https://github.com/Lucas-C/pre-commit-hooks-nodejs
-  rev: v1.1.2
-  hooks:
-  - id: markdown-toc
-    # optional custom config:
-    args: [--indent, "    ", -i]
-- repo: https://github.com/markdownlint/markdownlint.git
-  rev: v0.12.0
-  hooks:
-  - id: markdownlint
-    args: [--config, .markdownlint.json]

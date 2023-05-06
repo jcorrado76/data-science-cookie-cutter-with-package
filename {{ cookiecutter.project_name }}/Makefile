@@ -9,4 +9,7 @@ export_conda_environment_config:
 create_conda_environment_from_config:
 	conda env create -f ${CONDA_ENVIRONMENT_CFG_FILENAME}
 
+setup_pre_commit:
+	pre-commit install
+
 .PHONY: export_conda_environment_config create_conda_environment_from_config jupyter_kernel

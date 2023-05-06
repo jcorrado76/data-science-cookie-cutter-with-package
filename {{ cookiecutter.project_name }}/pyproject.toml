@@ -27,6 +27,9 @@ pandas-stubs = "*"
 flake8-bugbear = "*"
 sourcery = "*"
 
+[tool.isort]
+profile = "black"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"

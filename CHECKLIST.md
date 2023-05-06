@@ -10,4 +10,4 @@ These are the tasks I do or set up on every new project or repo:
 7. if I am not creating a package in the new repo, delete the `packages = ...` section from `pyproject.toml`
 8. create a `README.md` in the root of the repository
 9. create `.pre-commit-config.yaml` file in the root of the repository: [from my data science cookie cutter repo](https://github.com/jcorrado76/data-science-cookie-cutter-with-package/blob/main/%7B%7B%20cookiecutter.project_name%20%7D%7D/.pre-commit-config.yaml)
-10. initialize pre-commit: `pre-commit install`
+10. initialize pre-commit: `pre-commit install --hook-type pre-commit --hook-type pre-push`

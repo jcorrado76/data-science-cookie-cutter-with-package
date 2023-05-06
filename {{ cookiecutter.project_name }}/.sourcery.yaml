@@ -25,6 +25,15 @@ rule_settings:
   enable:
   - default
   - gpsg
+  # to enable only some of the Google Python style guide, uncomment below, and comment the one above
+  #- gpsg-import
+  #- gpsg-standard-import-alias
+  #- gpsg-lambda
+  #- gpsg-type-annotations
+  #- gpsg-docstrings
+  #- gpsg-naming
+  #- gpsg-naming-pep8
+
   disable: []  # A list of rule IDs Sourcery will never suggest.
   rule_types:
   - refactoring

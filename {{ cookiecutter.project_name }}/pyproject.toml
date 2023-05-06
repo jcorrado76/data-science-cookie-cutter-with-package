@@ -39,6 +39,3 @@ import_heading_firstparty = "{{ cookiecutter.package_name }} Imports"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
-
-[tool.isort]
-profile = "black"

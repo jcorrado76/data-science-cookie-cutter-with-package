@@ -32,3 +32,6 @@ repos:
       args: [--diff=git diff HEAD, --no-summary]
       # to automatically apply the changes
       # args: [--diff=git diff HEAD, --fix, --no-summary]
+      name: sourcery
+      types: [python]
+      stages: [push]

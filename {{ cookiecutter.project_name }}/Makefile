@@ -12,4 +12,12 @@ create_conda_environment_from_config:
 setup_pre_commit:
 	pre-commit install
 
-.PHONY: export_conda_environment_config create_conda_environment_from_config jupyter_kernel
+install-hooks:
+	@echo "Copying git hooks from .git-dev/hooks to .git/hooks..."
+	@bash scripts/devex/copy_git_hooks.sh .git-dev/hooks .git/hooks
+
+dev_env:
+	@echo "Generating poetry virtual environment"
+	poetry install --no-root
+
+.PHONY: export_conda_environment_config create_conda_environment_from_config jupyter_kernel dev_env install-hooks

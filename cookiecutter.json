@@ -2,15 +2,8 @@
     "full_name": "Joseph Corrado",
     "email": "josephcorrado7@gmail.com",
     "github_username": "jcorrado76",
-    "project_name": "hello_world",
-    "package_name": "hello_world",
-    "short_description": "Python Boilerplate contains all the boilerplate you need to create a Python package.",
-    "repo_name": "data-science-cookie-cutter-with-package",
-    "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
-    "pypi_username": "{{ cookiecutter.github_username }}",
-    "version": "0.1.0",
-    "use_pytest": "n",
-    "use_pypi_deployment_with_travis": "y",
-    "create_author_file": "y",
-    "open_source_license": ["MIT", "BSD", "ISCL", "Apache Software License 2.0", "Not open source"]
+    "project_name": "example_project",
+    "package_name": "example_package",
+    "description": "Cookiecutter template for a data science project with a package.",
+    "version": "0.1.0-alpha.1"
 }

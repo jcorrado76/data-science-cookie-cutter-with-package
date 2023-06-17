@@ -18,15 +18,24 @@ repos:
     entry: isort
     language: system
     types: [python]
+    description: Run isort to add import headers, and sort imports
   - id: black
     name: black
     entry: black
     language: system
     types: [python]
+    description: Run black to format Python code
+  - id: hadolint
+    name: Lint Dockerfiles
+    entry: hadolint
+    description: Run hadolint to lint Dockerfiles
+    language: system
+    types: ["dockerfile"]
 - repo: https://github.com/zahorniak/pre-commit-circleci.git
   rev: v0.6
   hooks:
     - id: circleci_validate
+      description: Validate `.circleci/config.yml` file
 - repo: https://github.com/sourcery-ai/sourcery
   rev: v1.2.0
   hooks:
@@ -40,3 +49,4 @@ repos:
       name: sourcery
       types: [python]
       stages: [push]
+      description: Run sourcery to suggest refactorings for Python code, using Google style guide

@@ -1,13 +1,45 @@
-This is a draft of my "new project/repo" checklist. 
-These are the tasks I do or set up on every new project or repo:
-1. decide what version of Python I'm using
-2. create a conda virtual environment dedicated for that version of Python: `conda create -n python[version] python==[version]`
-3. turn my local project into a poetry project: `poetry init`
-4. activate the new conda environment and tell poetry to use its version of Python: `conda activate python[version] && poetry env use $(which python)`
-5. add typical dev dependencies: [from my data science cookie cutter repo](https://github.com/jcorrado76/data-science-cookie-cutter-with-package/blob/main/%7B%7B%20cookiecutter.project_name%20%7D%7D/pyproject.toml)
-  * you can either `poetry add -G dev ...` these, or copy the whole `dev.dependencies` section into the local `pyproject.toml`, run `poetry lock`, then `poetry install`
-6. make sure the new poetry environment is activated by default in whatever IDE you're using
-7. if I am not creating a package in the new repo, delete the `packages = ...` section from `pyproject.toml`
-8. create a `README.md` in the root of the repository
-9. create `.pre-commit-config.yaml` file in the root of the repository: [from my data science cookie cutter repo](https://github.com/jcorrado76/data-science-cookie-cutter-with-package/blob/main/%7B%7B%20cookiecutter.project_name%20%7D%7D/.pre-commit-config.yaml)
-10. initialize pre-commit: `pre-commit install --hook-type pre-commit --hook-type pre-push`
+# Checklist
+
+These are the steps I follow every time I set up a new project:
+
+1. decide what version of Python
+2. create a conda virtual environment dedicated for that version of Python:
+
+```bash
+conda create -n python[version] python==[version]
+```
+
+3. If you haven't clone this repo:
+
+```bash
+git clone git@github.com:jcorrado76/data-science-cookie-cutter-with-package.git
+```
+
+4. Create a project from the cookiecutter template:
+
+```bash
+cookiecutter <path-to-cloned-repo>
+```
+
+5. Answer the configuration questions from `cookiecutter`
+6. `cd` into the new project
+7. tell `poetry` to use the version of Python created by our `conda` virtual environment above, and initialize the poetry virtual environment:
+
+```bash
+conda activate python[version] && poetry env use $(which python)
+```
+
+8. Install all dependencies:
+
+```bash
+poetry install
+```
+
+10. Configure PyCharm or VSCode to use the virtual environment created by `poetry`
+11. Uncomment any configurations in the `pyproject.toml`, or `.pre-commit-config.yaml` that I don't want
+16. initialize pre-commit:
+
+```bash
+pre-commit install
+```
+

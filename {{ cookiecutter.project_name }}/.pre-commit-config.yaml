@@ -23,6 +23,10 @@ repos:
     entry: black
     language: system
     types: [python]
+- repo: https://github.com/zahorniak/pre-commit-circleci.git
+  rev: v0.6
+  hooks:
+    - id: circleci_validate
 - repo: https://github.com/sourcery-ai/sourcery
   rev: v1.2.0
   hooks:

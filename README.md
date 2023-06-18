@@ -36,6 +36,8 @@ cookiecutter gh:jcorrado76/data-science-cookie-cutter-with-package
 
 Read more about using cookiecutter from [here](https://cookiecutter.readthedocs.io/en/2.0.2/usage.html#works-directly-with-git-and-hg-mercurial-repos-too).
 
+You can find the command line options [here](https://cookiecutter.readthedocs.io/en/2.0.2/advanced/cli_options.html).
+
 After running these commands, you should have your project folder, by the name of `{{ cookiecutter.project_name}}`.
 
 Inside that project folder, you'll have the above named resources, plus a folder with the value of `{{cookiecutter.package_name}}` that you supplied.

@@ -8,15 +8,16 @@
 # to change it to look for JIRA, or other issue style formats, 
 # change the regex in the `grep -Eo '#[0-9]+'` command below
 
-
-
 COMMIT_MSG_FILE=$1
 COMMIT_SOURCE=$2
 SHA1=$3
 
 BRANCH_NAME=$(git symbolic-ref --short HEAD)
 
-ISSUE_NUMBER=$(echo $BRANCH_NAME | grep -Eo '#[0-9]+')
+# GitHub-style issues are of the form #123
+ISSUE_NUMBER_PATTERN='#[0-9]+'
+
+ISSUE_NUMBER=$(echo $BRANCH_NAME | grep -Eo $ISSUE_NUMBER_PATTERN)
 
 if [ -n "$ISSUE_NUMBER" ]; then
   echo -e "\nref: $ISSUE_NUMBER" >> "$COMMIT_MSG_FILE"

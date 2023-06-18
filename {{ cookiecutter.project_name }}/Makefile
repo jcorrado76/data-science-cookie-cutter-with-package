@@ -10,7 +10,7 @@ create_conda_environment_from_config:
 	conda env create -f ${CONDA_ENVIRONMENT_CFG_FILENAME}
 
 setup-pre-commit:
-	pre-commit install
+	poetry run pre-commit install
 
 install-hooks:
 	@echo "Copying git hooks from .git-dev/hooks to .git/hooks..."

@@ -26,6 +26,16 @@ This is a cookie cutter template. So the steps to using this repo are to:
 2. edit the `cookiecutter.json` file to reflect your project's details
 3. run `cookiecutter <path-to-this-repo>` from wherever you'd like to create your new project folder
 
+You can also run `cookiecutter` with this template by running:
+
+```bash
+cookiecutter https://github.com/jcorrado76/data-science-cookie-cutter-with-package.git
+cookiecutter git+ssh://git@github.com:jcorrado76/data-science-cookie-cutter-with-package.git
+cookiecutter gh:jcorrado76/data-science-cookie-cutter-with-package
+```
+
+Read more about using cookiecutter from [here](https://cookiecutter.readthedocs.io/en/2.0.2/usage.html#works-directly-with-git-and-hg-mercurial-repos-too).
+
 After running these commands, you should have your project folder, by the name of `{{ cookiecutter.project_name}}`.
 
 Inside that project folder, you'll have the above named resources, plus a folder with the value of `{{cookiecutter.package_name}}` that you supplied.

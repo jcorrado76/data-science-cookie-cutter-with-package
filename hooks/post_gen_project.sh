@@ -6,6 +6,6 @@ poetry env use $(which python)
 echo "Installing dev dependencies"
 poetry install
 echo "Initializing pre-commit"
-poetry run pre-commit install install-hooks
+poetry run pre-commit install --install-hooks
 echo "Installing prepare-commit-msg hook into .git/hooks"
 make install-hooks

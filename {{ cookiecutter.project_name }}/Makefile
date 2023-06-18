@@ -14,7 +14,7 @@ setup_pre_commit:
 
 install-hooks:
 	@echo "Copying git hooks from .git-dev/hooks to .git/hooks..."
-	@bash scripts/devex/copy_git_hooks.sh .git-dev/hooks .git/hooks
+	@bash scripts/copy_git_hooks.sh .git-dev/hooks .git/hooks
 
 dev_env:
 	@echo "Generating poetry virtual environment"

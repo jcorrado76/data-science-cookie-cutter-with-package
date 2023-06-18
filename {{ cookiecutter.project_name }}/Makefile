@@ -1,7 +1,7 @@
 CONDA_ENVIRONMENT_CFG_FILENAME=conda_environment.yaml
 jupyter_kernel:
 	@echo "Installing Jupyter kernel..."
-	@python -m ipykernel install --user --name {{ cookiecutter.project_name }} --display-name "{{ cookiecutter.project_name }}"
+	@python -m ipykernel install --user --name {{ cookiecutter.package_name }} --display-name "{{ cookiecutter.package_name }}"
 
 export_conda_environment_config:
 	conda env export -f ${CONDA_ENVIRONMENT_CFG_FILENAME}

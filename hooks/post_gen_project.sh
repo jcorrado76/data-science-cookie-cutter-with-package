@@ -1,7 +1,11 @@
 #!/bin/sh
+echo "Initializing git repo"
 git init
-# use the currently active Python
+echo "Using currently active Python version"
 poetry env use $(which python)
+echo "Installing dev dependencies"
 poetry install
-poetry run pre-commit install
+echo "Initializing pre-commit"
+poetry run pre-commit install install-hooks
+eccho "Installing prepare-commit-msg hook into .git/hooks"
 make install-hooks

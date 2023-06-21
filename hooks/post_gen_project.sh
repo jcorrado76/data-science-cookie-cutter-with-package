@@ -1,7 +1,7 @@
 #!/bin/sh
 echo "Initializing git repo"
 git init
-echo "Using currently active Python version"
+echo "Using currently active Python version: $(python --version)"
 poetry env use $(which python)
 echo "Installing dev dependencies"
 poetry install

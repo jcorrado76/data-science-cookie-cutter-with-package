@@ -52,3 +52,28 @@ This facilitates:
 The `.pre-commit-config` starts with only the `isort` step uncommented, since it's relatively non-controversial, and doesn't make large edits to your code (it just sorts your imports).
 
 The inspiration for the directory structure comes from the [Prefect repo](https://github.com/PrefectHQ/prefect).
+
+## FAQ
+
+If you get this error when the pre-commit hooks are installing:
+
+```
+ImportError: dlopen(/Users/josephcorrado/anaconda3/lib/python3.10/lib-dynload/_sqlite3.cpython-310-darwin.so, 0x0002): Symbol not found: _sqlite3_enable_load_extension
+  Referenced from: <D8F5DD12-3FC5-3F3D-BF16-05B2C1D7FD2B> /Users/josephcorrado/anaconda3/lib/python3.10/lib-dynload/_sqlite3.cpython-310-darwin.so
+  Expected in:     <710E4989-2656-3774-8114-0C2936A8FC33> /usr/lib/libsqlite3.dylib
+```
+
+It's because the files from an older installation of the poetry virtual environment are cached and being used here, so there's a version mismatch. 
+To fix it, just figure out which poetry virtual environment you're trying to install to:
+
+```bash
+poetry env list
+```
+
+Then remove it:
+
+```bash
+poetry env remove <env-name>
+```
+
+Then try again.

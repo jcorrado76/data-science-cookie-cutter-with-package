@@ -15,3 +15,7 @@ echo "Appending config to .git/config"
 cat .git-dev/config >> .git/config
 echo "Configuring VSCode to run pytest on tests folder"
 mv .vscode-dev .vscode
+echo "Adding current poetry environment as default Python Interpreter in VSCode"
+path_to_poetry_interpreter=$(poetry run which python)
+echo "Using $path_to_poetry_interpreter as default Python Interpreter"
+sed -i 's/{/{\n    \"python.defaultInterpreterPath\": \"$path_to_poetry_interpreter\",/" .vscode/settings.json

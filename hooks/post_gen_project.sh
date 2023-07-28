@@ -9,5 +9,7 @@ echo "Initializing pre-commit"
 poetry run pre-commit install --install-hooks
 echo "Installing prepare-commit-msg hook into .git/hooks"
 make install-hooks
+echo "Installing git commit message template into .git folder"
+mv .git-dev/.gitmessage .git/.gitmessage
 echo "Configuring VSCode to run pytest on tests folder"
 mv .vscode-dev .vscode

@@ -18,4 +18,4 @@ mv .vscode-dev .vscode
 echo "Adding current poetry environment as default Python Interpreter in VSCode"
 path_to_poetry_interpreter=$(poetry run which python)
 echo "Using $path_to_poetry_interpreter as default Python Interpreter"
-sed -i 's/{/{\n    \"python.defaultInterpreterPath\": \"$path_to_poetry_interpreter\",/" .vscode/settings.json
+awk -v n=$path_to_poetry_interpreter '1;/^{/&&c++==0{print "    \"python.defaultInterpreterPath\": \"" n "\", "} ' .vscode/settings.json > temp && mv temp .vscode/settings.json

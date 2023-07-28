@@ -16,6 +16,8 @@ This template:
   * `hooks/prepare-commit-msg` - a git hook that appends your ticket number (pulled from your active branch name) and inserts it at the end of your commit message
   * `.gitmessage` - a default template for your commit messages
   * `config` - additional project-specific configurations for git that get appended to your `.git/config` file
+    * configure `git` to use VSCode as the commit message editor
+    * configure `git` to use the `gitmessage` template inside `.git/.gitmessage` as the default commit message template
 * creates a `.vscode-dev` folder:
   * it gets renamed to `.vscode` during installation so it's used by your VSCode IDE
   * it contains `settings.json` with:

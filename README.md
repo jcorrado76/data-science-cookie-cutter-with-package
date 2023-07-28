@@ -4,20 +4,29 @@ This repository is a Cookie Cutter template for spinning up a data science proje
 
 This template uses poetry to install dependencies, and will install the package that's being created in editable mode into the current virtual environment.
 
+This template:
 
-This template provides you with:
-
-* a data folder
-* a notebooks folder
-* a Python package folder
-* a `scripts` folder for global scripts to be run
-* a `tests` folder to test your package
-* a `pyproject.toml` file with my repeated dev dependencies, default tool configurations and project configurations
-* a `.git-dev` folder containing hooks to help format commit messages quickly
-* a `.pre-commit-config.yaml` file
-* a `.sourcery.yaml` file to configure sourcery to refactor your code; it comes with the Google Style Guide rules applied
-* a `.gitignore` file with a lot of default ignorable file patterns
-* a Makefile with some helper PHONY targets
+* creates a `data` folder
+* creates a `notebooks` folder
+* creates a Python package folder with name you passed on the command line
+* creates `scripts` folder for global scripts to be run
+* creates a `tests` folder to test your package
+* creates a `pyproject.toml` file with common dev dependencies, default tool configurations and Python package configurations
+* creates a `.git-dev` folder:
+  * `hooks/prepare-commit-msg` - a git hook that appends your ticket number (pulled from your active branch name) and inserts it at the end of your commit message
+  * `.gitmessage` - a default template for your commit messages
+  * `config` - additional project-specific configurations for git that get appended to your `.git/config` file
+* creates a `.vscode-dev` folder:
+  * it gets renamed to `.vscode` during installation so it's used by your VSCode IDE
+  * it contains `settings.json` with:
+    * a configuration to use `pytest` on the `tests` directory in the root of the repo
+    * your current active poetry Python interpreter gets injected into the `settings.json` file at installation time
+    * `mypy` validation is enabled by default
+* creates a `.pre-commit-config.yaml` file:
+  * it's configured so that you just run `pre-commit install` and it installs pre-commit and pre-push hooks
+* creates a `.sourcery.yaml` file to configure sourcery to refactor your code; it comes with the Google Style Guide rules applied
+* creates a `.gitignore` file with a lot of default ignorable file patterns
+* creates a `Makefile` with some helper PHONY targets
 
 ## Usage
 This is a cookie cutter template. So the steps to using this repo are to:

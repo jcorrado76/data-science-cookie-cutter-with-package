@@ -14,6 +14,9 @@ python = ">=3.8.1,<4.0"
 
 
 [tool.poetry.group.dev.dependencies]
+prettier = "*"
+sqlfluff = "*"
+shandy-sqlfmt = {extras = ["jinjafmt"], version = "*"}
 mypy = "*"
 black = "*"
 flake8 = "*"
@@ -29,6 +32,7 @@ pandas-stubs = "*"
 flake8-bugbear = "*"
 sourcery = "*"
 
+## ISORT CONFIGURATION
 [tool.isort]
 profile = "black"
 import_heading_stdlib = "Python Standard Library Imports"
@@ -38,6 +42,31 @@ import_heading_firstparty = "{{ cookiecutter.package_name }} Imports"
 known_first_party = ["{{ cookiecutter.package_name }}"]
 # known_third_party = ["<any 3rd party packages with potential name collisions>"]
 
+## SQLFLUFF CONFIGURATION
+### Make SQLFluff play nicely with sqlfmt, as described
+### here - https://docs.sqlfmt.com/integrations/sqlfluff
+[tool.sqlfluff]
+exclude_rules = [
+    "layout.indent", 
+    "layout.cte_bracket", 
+    "layout.select_targets"
+]
+# set max_line_length to whatever you set in sqlfmt
+max_line_length = 88
+
+[tool.sqlfluff.rules]
+capitalisation_policy = "lower"
+extended_capitalisation_policy = "lower"
+
+[tool.sqlfluff.rules.convention.terminator]
+multiline_newline = "True"
+
+## SQLFMT CONFIGURATION
+[tool.sqlfmt]
+### Ignore common DBT directories
+exclude=["target/**/*", "dbt_packages/**/*"]
+
+## PYTEST CONFIGURATION
 [tool.pytest.ini_options]
     filterwarnings = [
         # transform all other warnings into errors

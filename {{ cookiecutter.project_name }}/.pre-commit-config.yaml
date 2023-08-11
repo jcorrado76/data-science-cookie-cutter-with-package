@@ -31,6 +31,18 @@ repos:
     description: Run hadolint to lint Dockerfiles
     language: system
     types: ["dockerfile"]
+  - id: sqlfmt
+    name: sqlfmt
+    entry: sqlfmt
+    language: system
+    types: [sql]
+    description: Run sqlfmt to format SQL code
+  - id: sqlfluff
+    name: sqlfluff
+    entry: sqlfluff-fix
+    language: system
+    types: [sql]
+    description: Run sqlfluff to lint SQL code
 - repo: https://github.com/zahorniak/pre-commit-circleci.git
   rev: v0.6
   hooks:

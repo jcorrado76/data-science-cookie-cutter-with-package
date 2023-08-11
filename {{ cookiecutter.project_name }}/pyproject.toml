@@ -45,21 +45,61 @@ known_first_party = ["{{ cookiecutter.package_name }}"]
 ## SQLFLUFF CONFIGURATION
 ### Make SQLFluff play nicely with sqlfmt, as described
 ### here - https://docs.sqlfmt.com/integrations/sqlfluff
-[tool.sqlfluff]
+[tool.sqlfluff.core]
+dialect = "ansi"
+templater = "jinja"
+runaway_limit = 10
 exclude_rules = [
     "layout.indent", 
     "layout.cte_bracket", 
     "layout.select_targets"
 ]
 # set max_line_length to whatever you set in sqlfmt
-max_line_length = 88
+max_line_length = 80
+indent_unit = "space"
+processes = -1
 
 [tool.sqlfluff.rules]
 capitalisation_policy = "lower"
 extended_capitalisation_policy = "lower"
 
 [tool.sqlfluff.rules.convention.terminator]
-multiline_newline = "True"
+multiline_newline = true
+
+[tool.sqlfluff.indentation]
+tab_space_size = 4
+
+[tool.sqlfluff.layout.type.comma]
+spacing_before = "touch"
+line_position = "trailing"
+
+[tool.sqlfluff.rules.capitalisation.keywords]
+capitalisation_policy = "lower"
+
+[tool.sqlfluff.rules.aliasing.table]
+aliasing = "explicit"
+
+[tool.sqlfluff.rules.aliasing.column]
+aliasing = "explicit"
+
+[tool.sqlfluff.rules.aliasing.expression]
+allow_scalar = false
+
+
+[tool.sqlfluff.rules.capitalisation.identifiers]
+capitalisation_policy = "lower"
+
+[tool.sqlfluff.rules.capitalisation.functions]
+extended_capitalisation_policy = "lower"
+
+[tool.sqlfluff.rules.capitalisation.literals]
+capitalisation_policy = "lower"
+
+[tool.sqlfluff.rules.capitalisation.types]
+extended_capitalisation_policy = "lower"
+
+[tool.sqlfluff.rules.ambiguous.column_references]
+group_by_and_order_by_style = "implicit"
 
 ## SQLFMT CONFIGURATION
 [tool.sqlfmt]

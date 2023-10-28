@@ -41,7 +41,9 @@ jobs:
           paths:
             - example_project
             - cache-pyproject.toml
-            - .cache/pypoetry/virtualenvs
+            # current working directory is /home/circleci/project
+            # but the poetry caches go in /home/circleci/.cache
+            - ../.cache/pypoetry/virtualenvs
 
       - save_cache:
           key: poetry-v1-{{ .Branch }}-{{ checksum "cache-pyproject.toml" }}
@@ -56,7 +58,7 @@ jobs:
       - attach_workspace:
           at: ~/
 
-      - run: pwd && ls -al .
+      - run: pwd && ls -al . && ls -al ~/.cache/pypoetry/virtualenvs/
 
       - run:
           name: Run unit tests

@@ -1,7 +1,7 @@
 version: 2.1
 
-# orbs:
-#   python: circleci/python@2.1.1
+orbs:
+  python: circleci/python@2.1.1
 
 jobs:
   run-cookiecutter:
@@ -41,6 +41,7 @@ jobs:
           paths:
             - example_project
             - cache-pyproject.toml
+            - /home/circleci/.cache/pypoetry/virtualenvs
 
       - save_cache:
           key: poetry-v1-{{ .Branch }}-{{ checksum "cache-pyproject.toml" }}
@@ -57,17 +58,13 @@ jobs:
 
       - run: pwd && ls -al .
 
-      - restore_cache:
-            keys:
-              - poetry-v1-{{ .Branch }}-{{ checksum "~/cache-pyproject.toml" }}
-              - poetry-v1-{{ .Branch }}-
-              - poetry-v1-
+      - python/install-packages:
+          pkg-manager: poetry
 
       - run:
           name: Run unit tests
           command: |
             poetry run pytest tests
-
 
 
 workflows:

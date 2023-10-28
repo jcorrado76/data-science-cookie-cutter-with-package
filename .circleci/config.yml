@@ -4,22 +4,28 @@ version: 2.1
 #   python: circleci/python@2.1.1
 
 jobs:
-  unit-tests:
+  run-cookiecutter:
     docker:
       - image: cimg/python:3.11.4
     steps:
-      - run:
-          name: Install Cookiecutter
-          command: |
-            pip install cookiecutter
       - run:
           name: Install pipx
           command: |
             pip install --user pipx && pipx ensurepath
       - run:
+          name: Install Cookiecutter
+          command: |
+            pipx install cookiecutter
+      - run:
           name: Install poetry
           command: |
             pipx install poetry
+      - run:
+          name: Run Cookiecutter
+          command: |
+            pipx cookiecutter https://github.com/jcorrado76/data-science-cookie-cutter-with-package.git \
+              --no-input
+
       # - checkout
       # - python/install-packages:
       #     pkg-manager: poetry
@@ -31,4 +37,4 @@ jobs:
 workflows:
   main:
     jobs:
-      - unit-tests
+      - run-cookiecutter

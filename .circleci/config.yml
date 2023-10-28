@@ -58,9 +58,6 @@ jobs:
 
       - run: pwd && ls -al .
 
-      - python/install-packages:
-          pkg-manager: poetry
-
       - run:
           name: Run unit tests
           command: |

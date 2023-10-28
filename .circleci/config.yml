@@ -41,7 +41,7 @@ jobs:
           paths:
             - example_project
             - cache-pyproject.toml
-            - /home/circleci/.cache/pypoetry/virtualenvs
+            - .cache/pypoetry/virtualenvs
 
       - save_cache:
           key: poetry-v1-{{ .Branch }}-{{ checksum "cache-pyproject.toml" }}

@@ -66,8 +66,8 @@ dialect = "ansi"
 templater = "jinja"
 runaway_limit = 10
 exclude_rules = [
-    "layout.indent", 
-    "layout.cte_bracket", 
+    "layout.indent",
+    "layout.cte_bracket",
     "layout.select_targets"
 ]
 # set max_line_length to whatever you set in sqlfmt

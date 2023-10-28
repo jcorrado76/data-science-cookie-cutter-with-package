@@ -37,4 +37,3 @@ for file in "$src_dir"/*; do
 done
 
 echo "Files copied and made executable successfully."
-

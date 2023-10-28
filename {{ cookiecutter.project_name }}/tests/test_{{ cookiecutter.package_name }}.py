@@ -1,4 +1,5 @@
-from {{ cookiecutter.package_name }} import hello_world
+# Third Party Imports
+from {{cookiecutter.package_name}} import hello_world
 
 
 def test_can_import_{{ cookiecutter.package_name }}():

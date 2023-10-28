@@ -1,6 +1,6 @@
 # Data Science Cookie Cutter Template
 
-This repository is a Cookie Cutter template for spinning up a data science project in which you'd also like to quickly develop and refactor Python code into a separate package. 
+This repository is a Cookie Cutter template for spinning up a data science project in which you'd also like to quickly develop and refactor Python code into a separate package.
 
 This template uses poetry to install dependencies, and will install the package that's being created in editable mode into the current virtual environment.
 
@@ -74,7 +74,7 @@ ImportError: dlopen(/Users/josephcorrado/anaconda3/lib/python3.10/lib-dynload/_s
   Expected in:     <710E4989-2656-3774-8114-0C2936A8FC33> /usr/lib/libsqlite3.dylib
 ```
 
-It's because the files from an older installation of the poetry virtual environment are cached and being used here, so there's a version mismatch. 
+It's because the files from an older installation of the poetry virtual environment are cached and being used here, so there's a version mismatch.
 To fix it, just figure out which poetry virtual environment you're trying to install to:
 
 ```bash

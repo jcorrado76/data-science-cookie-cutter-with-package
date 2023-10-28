@@ -42,4 +42,3 @@ poetry install
 ```bash
 pre-commit install
 ```
-

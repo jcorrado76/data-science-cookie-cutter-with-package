@@ -34,6 +34,7 @@ jobs:
           command: |
             pipx run cookiecutter https://github.com/jcorrado76/data-science-cookie-cutter-with-package.git \
               --no-input
+      - run: pwd && ls -al .
       - run:
           name: Test can import package
           command: |

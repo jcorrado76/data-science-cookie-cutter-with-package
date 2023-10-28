@@ -12,6 +12,14 @@ jobs:
           name: Install Cookiecutter
           command: |
             pip install cookiecutter
+      - run:
+          name: Install pipx
+          command: |
+            pip install --user pipx && pipx ensurepath
+      - run:
+          name: Install poetry
+          command: |
+            pipx install poetry
       # - checkout
       # - python/install-packages:
       #     pkg-manager: poetry

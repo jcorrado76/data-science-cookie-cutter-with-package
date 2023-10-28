@@ -34,42 +34,19 @@ jobs:
           command: |
             pipx run cookiecutter https://github.com/jcorrado76/data-science-cookie-cutter-with-package.git \
               --no-input
-      - run: pwd && ls -al .
 
-      - persist_to_workspace:
-          root: ..
-          paths:
-            - project/example_project
-            - project/cache-pyproject.toml
-            # current working directory is /home/circleci/project
-            # but the poetry caches go in /home/circleci/.cache
-            - .cache/pypoetry/virtualenvs
+      - run:
+          name: Run unit tests
+          command: |
+            cd example_project && poetry run pytest tests
 
       - save_cache:
           key: poetry-v1-{{ .Branch }}-{{ checksum "cache-pyproject.toml" }}
           paths:
             - /home/circleci/.cache/pypoetry/virtualenvs/
-  
-  run-unit-tests:
-    docker:
-      - image: cimg/python:3.11.4
-    working_directory: ~/example_project
-    steps:
-      - attach_workspace:
-          at: ~/
-
-      - run: pwd && ls -al . && ls -al ~/.cache/pypoetry/virtualenvs/
-
-      - run:
-          name: Run unit tests
-          command: |
-            poetry run pytest tests
 
 
 workflows:
   main:
     jobs:
       - run-cookiecutter
-      - run-unit-tests:
-          requires:
-            - run-cookiecutter

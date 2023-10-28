@@ -35,16 +35,45 @@ jobs:
             pipx run cookiecutter https://github.com/jcorrado76/data-science-cookie-cutter-with-package.git \
               --no-input
       - run: pwd && ls -al .
-      - run:
-          name: Test can import package
-          command: |
-            cd example_project && poetry run pytest tests
+
+      - persist_to_workspace:
+          root: .
+          paths:
+            - example_project
+            - cache-pyproject.toml
+
       - save_cache:
-          key: poetry-v1-{{ .Branch }}-{{ checksum "pyproject.toml" }}
+          key: poetry-v1-{{ .Branch }}-{{ checksum "cache-pyproject.toml" }}
           paths:
             - /home/circleci/.cache/pypoetry/virtualenvs/
+  
+  run-unit-tests:
+    docker:
+      - image: cimg/python:3.11.4
+    working_directory: ~/example_project
+    steps:
+      - attach_workspace:
+          at: ~/
+
+      - run: pwd && ls -al .
+
+      - restore_cache:
+            keys:
+              - poetry-v1-{{ .Branch }}-{{ checksum "~/cache-pyproject.toml" }}
+              - poetry-v1-{{ .Branch }}-
+              - poetry-v1-
+
+      - run:
+          name: Run unit tests
+          command: |
+            poetry run pytest tests
+
+
 
 workflows:
   main:
     jobs:
       - run-cookiecutter
+      - run-unit-tests:
+          requires:
+            - run-cookiecutter

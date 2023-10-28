@@ -21,18 +21,27 @@ jobs:
           command: |
             pipx install poetry
       - run:
+          name: Download pyproject.toml
+          command: |
+            curl -O https://raw.githubusercontent.com/jcorrado76/data-science-cookie-cutter-with-package/main/%7B%7B%20cookiecutter.project_name%20%7D%7D/pyproject.toml
+      - restore_cache:
+            keys:
+              - poetry-v1-{{ .Branch }}-{{ checksum "pyproject.toml" }}
+              - poetry-v1-{{ .Branch }}-
+              - poetry-v1-
+      - run:
           name: Run Cookiecutter
           command: |
             pipx run cookiecutter https://github.com/jcorrado76/data-science-cookie-cutter-with-package.git \
               --no-input
-
-      # - checkout
-      # - python/install-packages:
-      #     pkg-manager: poetry
-      # - run:
-      #     command: |
-      #       poetry run pytest tests
-      #     name: Run unit tests
+      - run:
+          name: Test can import package
+          command: |
+            poetry 
+      - save_cache:
+          key: poetry-v1-{{ .Branch }}-{{ checksum "pyproject.toml" }}
+          paths:
+            - /home/circleci/.cache/pypoetry/virtualenvs/
 
 workflows:
   main:

@@ -3,3 +3,6 @@
 
 [commit]
     template = .git/.gitmessage
+
+[init]
+    defaultBranch = dev

@@ -42,6 +42,22 @@ import_heading_firstparty = "{{ cookiecutter.package_name }} Imports"
 known_first_party = ["{{ cookiecutter.package_name }}"]
 # known_third_party = ["<any 3rd party packages with potential name collisions>"]
 
+## PYTEST CONFIGURATION
+[tool.pytest.ini_options]
+filterwarnings = [
+    # transform all other warnings into errors
+    "error",
+    # ignore UserWarnings
+    "ignore::UserWarning",
+    # note the use of single quote below to denote "raw" strings in TOML
+    'ignore:function ham\(\) is deprecated:DeprecationWarning',
+    "ignore::DeprecationWarning",
+]
+addopts = "--capture=no"
+testpaths = [
+    "tests"
+]
+
 ## SQLFLUFF CONFIGURATION
 ### Make SQLFluff play nicely with sqlfmt, as described
 ### here - https://docs.sqlfmt.com/integrations/sqlfluff
@@ -105,23 +121,6 @@ group_by_and_order_by_style = "implicit"
 [tool.sqlfmt]
 ### Ignore common DBT directories
 exclude=["target/**/*", "dbt_packages/**/*"]
-
-## PYTEST CONFIGURATION
-[tool.pytest.ini_options]
-filterwarnings = [
-    # transform all other warnings into errors
-    "error",
-    # ignore UserWarnings
-    "ignore::UserWarning",
-    # note the use of single quote below to denote "raw" strings in TOML
-    'ignore:function ham\(\) is deprecated:DeprecationWarning',
-    "ignore::DeprecationWarning",
-]
-addopts = "--capture=no"
-testpaths = [
-    "tests"
-]
-
 
 [build-system]
 requires = ["poetry-core"]

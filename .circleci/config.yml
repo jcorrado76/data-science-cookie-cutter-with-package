@@ -21,7 +21,7 @@ jobs:
           command: |
             pipx install poetry
       - run:
-          name: Download pyproject.toml
+          name: Download pyproject.toml before running cookiecutter to cache the poetry venvs
           command: |
             curl -O https://raw.githubusercontent.com/jcorrado76/data-science-cookie-cutter-with-package/main/%7B%7B%20cookiecutter.project_name%20%7D%7D/pyproject.toml
       - restore_cache:
@@ -37,7 +37,7 @@ jobs:
       - run:
           name: Test can import package
           command: |
-            poetry 
+            poetry run pytest tests
       - save_cache:
           key: poetry-v1-{{ .Branch }}-{{ checksum "pyproject.toml" }}
           paths:

@@ -37,13 +37,13 @@ jobs:
       - run: pwd && ls -al .
 
       - persist_to_workspace:
-          root: .
+          root: ..
           paths:
-            - example_project
-            - cache-pyproject.toml
+            - project/example_project
+            - project/cache-pyproject.toml
             # current working directory is /home/circleci/project
             # but the poetry caches go in /home/circleci/.cache
-            - ../.cache/pypoetry/virtualenvs
+            - .cache/pypoetry/virtualenvs
 
       - save_cache:
           key: poetry-v1-{{ .Branch }}-{{ checksum "cache-pyproject.toml" }}

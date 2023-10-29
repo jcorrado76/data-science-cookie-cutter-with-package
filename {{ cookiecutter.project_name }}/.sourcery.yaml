@@ -35,7 +35,12 @@ rule_settings:
   #- gpsg-naming
   #- gpsg-naming-pep8
 
-  disable: []  # A list of rule IDs Sourcery will never suggest.
+  disable:
+  - docstrings-for-modules  # A list of rule IDs Sourcery will never suggest.
+  - docstrings-for-classes
+  - docstrings-for-functions
+  - avoid-global-variables
+  - require-return-annotation
   rule_types:
   - refactoring
   - suggestion

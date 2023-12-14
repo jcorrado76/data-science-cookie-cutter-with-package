@@ -20,4 +20,10 @@ dev_env:
 	@echo "Generating poetry virtual environment"
 	poetry install --no-root
 
-.PHONY: export_conda_environment_config create_conda_environment_from_config jupyter_kernel dev_env install-hooks
+up:
+	docker compose up -d
+
+down:
+	docker compose down
+
+.PHONY: export_conda_environment_config create_conda_environment_from_config jupyter_kernel dev_env install-hooks up down

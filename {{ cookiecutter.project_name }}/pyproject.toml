@@ -42,6 +42,23 @@ import_heading_firstparty = "{{ cookiecutter.package_name }} Imports"
 known_first_party = ["{{ cookiecutter.package_name }}"]
 # known_third_party = ["<any 3rd party packages with potential name collisions>"]
 
+## BLACK CONFIGURATION
+[tool.black]
+# line-length = 99 # override black's default line-length
+exclude = '''
+/(
+    \.git
+  | \.mypy_cache
+  | \.tox
+  | venv
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
 ## PYTEST CONFIGURATION
 [tool.pytest.ini_options]
 filterwarnings = [

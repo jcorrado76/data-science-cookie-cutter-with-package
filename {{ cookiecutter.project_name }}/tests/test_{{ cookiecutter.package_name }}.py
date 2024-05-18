@@ -1,4 +1,4 @@
-# Third Party Imports
+# {{ cookiecutter.package_name }} Imports
 from {{cookiecutter.package_name}} import hello_world
 
 

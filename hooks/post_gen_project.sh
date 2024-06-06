@@ -30,3 +30,4 @@ git add README.md && git commit -m "add README"
 git add notebooks && git commit -m "add jupyter notebooks folder"
 git add pyproject.toml poetry.lock && git commit -m "add initial dev dependencies"
 git add scripts && git commit -m "add scripts folder with move git hooks script"
+make tests

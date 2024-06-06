@@ -26,4 +26,7 @@ up:
 down:
 	docker compose down
 
-.PHONY: export_conda_environment_config create_conda_environment_from_config jupyter_kernel dev_env install-hooks up down
+tests:
+	poetry run pytest
+
+.PHONY: export_conda_environment_config create_conda_environment_from_config jupyter_kernel dev_env install-hooks up down tests

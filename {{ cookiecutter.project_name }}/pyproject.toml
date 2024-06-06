@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "{{ cookiecutter.package_name }}"
 # the first alpha pre-release of version 0.1.0
-version = "{{ cookiecutter.version }} "
+version = "{{ cookiecutter.version }}"
 description = "{{ cookiecutter.description }}"
 authors = ["{{ cookiecutter.full_name }} <{{ cookiecutter.email }}>"]
 readme = "README.md"

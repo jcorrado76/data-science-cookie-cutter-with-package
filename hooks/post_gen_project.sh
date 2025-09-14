@@ -20,7 +20,7 @@ echo "Appending pyproject.toml tool config to created pyproject.toml"
 cat pyproject-tool-config.toml >> pyproject.toml
 echo "Configuring VSCode to run pytest on tests folder"
 mv .vscode-dev .vscode
-echo "Adding current poetry environment as default Python Interpreter in VSCode"
+echo "Adding managed Python as default Python Interpreter in VSCode"
 path_to_python_interpreter=$(uv run python -c 'import sys; print(sys.executable)')
 echo "Using $path_to_python_interpreter as default Python Interpreter"
 awk -v n=$path_to_python_interpreter '1;/^{/&&c++==0{print "    \"python.defaultInterpreterPath\": \"" n "\", "} ' .vscode/settings.json > temp && mv temp .vscode/settings.json

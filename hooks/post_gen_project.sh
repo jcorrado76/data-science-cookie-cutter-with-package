@@ -1,10 +1,18 @@
 #!/bin/sh
-echo "Initializing git repo"
-git init
-echo "Using currently active Python version: $(python --version)"
-poetry env use $(which python)
-echo "Installing dev dependencies"
-poetry install
+echo "mkdir -p {{ cookiecutter.project_name }}"
+mkdir -p {{ cookiecutter.project_name }}
+echo "uv init --package"
+uv init --package \
+    --directory {{ cookiecutter.project_name }} \
+    --name {{ cookiecutter.package_name }} \
+    --description {{ cookiecutter.description }} \
+    --author-from git \
+    --no-pin-python \
+    --managed-python
+echo "uv venv --python 3.12"
+uv venv --python 3.12
+echo "Installing dependencies"
+uv sync --dev
 echo "Installing prepare-commit-msg hook into .git/hooks"
 make install-hooks
 echo "Installing git commit message template into .git folder"

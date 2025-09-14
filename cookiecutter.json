@@ -5,5 +5,5 @@
     "project_name": "example_project",
     "package_name": "example_package",
     "description": "Cookiecutter template for a data science project with a package.",
-    "version": "0.1.0-alpha.1"
+    "python_version": "3.12"
 }

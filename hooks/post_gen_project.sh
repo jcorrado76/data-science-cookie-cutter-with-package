@@ -21,7 +21,6 @@ git add tests {{ cookiecutter.package_name }} && poetry run git commit -m "initi
 git add .circleci && poetry run git commit -m "initial commit on CircleCI Configuration"
 git add .git-dev && git commit -m "initial commit on git configuration files"
 git add .gitignore && git commit -m "add .gitignore"
-git add .sourcery.yaml && git commit -m "add sourcery config"
 git add Makefile && git commit -m "add Makefile"
 git add README.md && git commit -m "add README"
 git add notebooks && git commit -m "add jupyter notebooks folder"

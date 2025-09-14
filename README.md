@@ -24,13 +24,11 @@ This template:
     * a configuration to use `pytest` on the `tests` directory in the root of the repo
     * your current active poetry Python interpreter gets injected into the `settings.json` file at installation time
     * `mypy` validation is enabled by default
-* creates a `.pre-commit-config.yaml` file:
-  * it's configured so that you just run `pre-commit install` and it installs pre-commit and pre-push hooks
-* creates a `.sourcery.yaml` file to configure sourcery to refactor your code; it comes with the Google Style Guide rules applied
 * creates a `.gitignore` file with a lot of default ignorable file patterns
 * creates a `Makefile` with some helper PHONY targets
 
 ## Usage
+
 This is a cookie cutter template. So the steps to using this repo are to:
 
 1. clone this repo
@@ -59,32 +57,3 @@ This facilitates:
 
 1. not including tests in your deployed package
 2. installing your python package locally in editable mode, so you can use it easier
-
-The `.pre-commit-config` starts with only the `isort` step uncommented, since it's relatively non-controversial, and doesn't make large edits to your code (it just sorts your imports).
-
-The inspiration for the directory structure comes from the [Prefect repo](https://github.com/PrefectHQ/prefect).
-
-## FAQ
-
-If you get this error when the pre-commit hooks are installing:
-
-```
-ImportError: dlopen(/Users/josephcorrado/anaconda3/lib/python3.10/lib-dynload/_sqlite3.cpython-310-darwin.so, 0x0002): Symbol not found: _sqlite3_enable_load_extension
-  Referenced from: <D8F5DD12-3FC5-3F3D-BF16-05B2C1D7FD2B> /Users/josephcorrado/anaconda3/lib/python3.10/lib-dynload/_sqlite3.cpython-310-darwin.so
-  Expected in:     <710E4989-2656-3774-8114-0C2936A8FC33> /usr/lib/libsqlite3.dylib
-```
-
-It's because the files from an older installation of the poetry virtual environment are cached and being used here, so there's a version mismatch.
-To fix it, just figure out which poetry virtual environment you're trying to install to:
-
-```bash
-poetry env list
-```
-
-Then remove it:
-
-```bash
-poetry env remove <env-name>
-```
-
-Then try again.

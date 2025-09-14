@@ -5,8 +5,6 @@ echo "Using currently active Python version: $(python --version)"
 poetry env use $(which python)
 echo "Installing dev dependencies"
 poetry install
-echo "Initializing pre-commit"
-poetry run pre-commit install --install-hooks
 echo "Installing prepare-commit-msg hook into .git/hooks"
 make install-hooks
 echo "Installing git commit message template into .git folder"
@@ -23,7 +21,6 @@ git add tests {{ cookiecutter.package_name }} && poetry run git commit -m "initi
 git add .circleci && poetry run git commit -m "initial commit on CircleCI Configuration"
 git add .git-dev && git commit -m "initial commit on git configuration files"
 git add .gitignore && git commit -m "add .gitignore"
-git add .pre-commit-config.yaml && git commit -m "add pre-commit config"
 git add .sourcery.yaml && git commit -m "add sourcery config"
 git add Makefile && git commit -m "add Makefile"
 git add README.md && git commit -m "add README"

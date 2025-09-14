@@ -10,14 +10,14 @@ def test_bake_project(cookies):
     )
 
     assert result.exit_code == 0
-    # assert result.exception is None
-    # assert result.project_path.name == "example_project"
-    # assert result.project_path.is_dir()
-    # assert result.project_path.joinpath("README.md").exists()
-    # assert result.project_path.joinpath("pyproject.toml").exists()
-    # assert result.project_path.joinpath("tests").exists()
-    # assert (
-    #     result.project_path.joinpath("tests")
-    #     .joinpath("test_example_package.py")
-    #     .exists()
-    # )
+    assert result.exception is None
+    assert result.project_path.name == "example_project"
+    assert result.project_path.is_dir()
+    assert result.project_path.joinpath("README.md").exists()
+    assert result.project_path.joinpath("pyproject.toml").exists()
+    assert result.project_path.joinpath("tests").exists()
+    assert (
+        result.project_path.joinpath("tests")
+        .joinpath("test_example_package.py")
+        .exists()
+    )

@@ -4,10 +4,9 @@ uv init --package \
     --name '{{ cookiecutter.package_name }}' \
     --description '{{ cookiecutter.description }}' \
     --author-from git \
+    --python '>={{ cookiecutter.python_version }},<3.13' \
     --no-pin-python \
     --managed-python
-echo "uv venv --python 3.12"
-uv venv --python 3.12
 echo "Installing dependencies"
 uv sync --dev
 echo "Installing prepare-commit-msg hook into .git/hooks"
@@ -18,6 +17,8 @@ echo "Appending config to .git/config"
 cat .git-dev/config >> .git/config
 echo "Appending pyproject.toml tool config to created pyproject.toml"
 cat pyproject-tool-config.toml >> pyproject.toml
+echo "Cleaning up pyproject-tool-config.toml"
+rm pyproject-tool-config.toml
 echo "Configuring VSCode to run pytest on tests folder"
 mv .vscode-dev .vscode
 echo "Adding managed Python as default Python Interpreter in VSCode"

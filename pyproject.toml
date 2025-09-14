@@ -1,0 +1,7 @@
+[project]
+name = "data-science-cookie-cutter-with-package"
+version = "0.1.0"
+description = "Cookiecutter template for a data science project with a package."
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = []

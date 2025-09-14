@@ -1,38 +1,3 @@
-[project]
-name = "{{ cookiecutter.package_name }}"
-# the first alpha pre-release of version 0.1.0
-version = "{{ cookiecutter.version }}"
-description = "{{ cookiecutter.description }}"
-authors = [
-    "{{ cookiecutter.full_name }} <{{ cookiecutter.email }}>"
-]
-readme = "README.md"
-requires-python = ">=3.12,<3.13"
-dependencies = []
-
-[project.scripts]
-{{ cookiecutter.package_name }}
-
-
-[tool.poetry.group.dev.dependencies]
-prettier = "*"
-sqlfluff = "*"
-shandy-sqlfmt = {extras = ["jinjafmt"], version = "*"}
-mypy = "*"
-black = "*"
-flake8 = "*"
-pre-commit = "*"
-pytest = "*"
-pytest-cov = "*"
-interrogate = "*"
-isort = "*"
-commitizen = "*"
-ipykernel = "*"
-jupyter = "*"
-pandas-stubs = "*"
-flake8-bugbear = "*"
-sourcery = "*"
-
 ## ISORT CONFIGURATION
 [tool.isort]
 profile = "black"
@@ -139,7 +104,3 @@ group_by_and_order_by_style = "implicit"
 [tool.sqlfmt]
 ### Ignore common DBT directories
 exclude=["target/**/*", "dbt_packages/**/*"]
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"

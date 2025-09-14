@@ -19,6 +19,8 @@ echo "Installing git commit message template into .git folder"
 cp .git-dev/.gitmessage .git/.gitmessage
 echo "Appending config to .git/config"
 cat .git-dev/config >> .git/config
+echo "Appending pyproject.toml tool config to created pyproject.toml"
+cat pyproject-tool-config.toml >> pyproject.toml
 echo "Configuring VSCode to run pytest on tests folder"
 mv .vscode-dev .vscode
 echo "Adding current poetry environment as default Python Interpreter in VSCode"
